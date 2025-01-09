@@ -14,7 +14,7 @@ const OAuthRedirect = () => {
             const decoded = jwtDecode(token);
             localStorage.setItem('name', decoded.name);
             localStorage.setItem('email', decoded.email);
-            navigate('/home');
+            navigate('/');
         }
     }, [location, navigate]);
 

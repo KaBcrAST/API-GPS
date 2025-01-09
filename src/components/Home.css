@@ -1,0 +1,41 @@
+.home-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    padding-top: 50px; /* Ajuster pour compenser la hauteur du header fixe */
+  }
+  
+  .main-content {
+    display: flex;
+    flex-grow: 1;
+  }
+  
+  .map-container {
+    flex-grow: 1;
+    position: relative;
+    width: 100%; /* Prendre toute la largeur disponible */
+  }
+  
+  .login-popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    z-index: 1001;
+  }
+  
+  .login-popup-content {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .close-button {
+    align-self: flex-end;
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+  }

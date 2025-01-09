@@ -1,0 +1,62 @@
+.map-container {
+  display: flex;
+  height: 100vh;
+  width: 100%;
+}
+
+.sidebar-container {
+  width: 300px;
+  background-color: #1A161D; /* Couleur de fond */
+  border-right: 1px solid #ddd;
+  padding: 1rem;
+  overflow-y: auto;
+  color: #ffffff; /* Couleur du texte */
+}
+
+.search-container {
+  margin-bottom: 1rem;
+}
+
+.search-input {
+  width: calc(100% - 1rem);
+  margin-bottom: 0.5rem;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #333; /* Couleur de fond des champs de saisie */
+  color: #ffffff; /* Couleur du texte des champs de saisie */
+}
+
+.search-button {
+  width: 100%;
+  padding: 0.5rem;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.routes-container {
+  margin-top: 1rem;
+  overflow-y: auto;
+  flex-grow: 1;
+}
+
+.route-option {
+  padding: 0.5rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  margin-bottom: 0.5rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.route-option.selected {
+  background-color: #007bff;
+  color: #fff;
+}
+
+.route-option:hover {
+  background-color: #f0f0f0;
+}

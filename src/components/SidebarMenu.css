@@ -1,0 +1,31 @@
+.sidebar-menu {
+  position: fixed;
+  top: 50%; /* Positionner au milieu de la page */
+  right: 0; /* Coller le SidebarMenu à droite */
+  width: 70px; /* Largeur spécifiée */
+  height: 350px; /* Hauteur spécifiée */
+  background-color: #1A161D; /* Couleur de fond */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 20px;
+  box-shadow: 2px 0 5px #1A161D; /* Couleur de l'ombre */
+  z-index: 1001; /* Assurez-vous que le menu est au-dessus de la carte */
+  transform: translateY(-50%); /* Centrer verticalement */
+  border-radius: 10px; /* Arrondir les bords */
+}
+
+.icon-container {
+  margin: 20px 0;
+}
+
+.icon-container.bottom {
+  margin-top: auto;
+  margin-bottom: 20px;
+}
+
+.icon {
+  font-size: 24px;
+  color: #ffffff; /* Couleur des icônes */
+  cursor: pointer;
+}
