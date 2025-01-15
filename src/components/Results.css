@@ -1,0 +1,26 @@
+.results-container {
+  margin-top: 1rem;
+  padding: 1rem;
+  background-color: #f8f9fa;
+  border-radius: 4px;
+  overflow-y: auto;
+  max-height: calc(100vh - 200px); /* Ajuster pour limiter la hauteur des résultats */
+}
+
+.route-option {
+  padding: 0.5rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  margin-bottom: 0.5rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.route-option.selected {
+  background-color: #007bff;
+  color: #fff;
+}
+
+.route-option:hover {
+  background-color: #f0f0f0;
+}

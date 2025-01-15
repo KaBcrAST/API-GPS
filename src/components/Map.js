@@ -4,6 +4,7 @@ import axios from 'axios';
 import Sidebar from './Sidebar';
 import MapContainer from './MapContainer';
 import SidebarMenu from './SidebarMenu';
+import Results from './Results';
 import './Map.css'; // Assurez-vous de créer ce fichier CSS pour la mise en page
 
 const libraries = ['places'];
@@ -15,7 +16,7 @@ const franceBounds = {
   east: 9.6624999,
 };
 
-const Map = () => {
+const Map = ({ name }) => {
   const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
     libraries,
@@ -100,7 +101,7 @@ const Map = () => {
   if (!isLoaded) return <div>Chargement...</div>;
 
   return (
-    <div className="map-container">
+    <div className="map-container relative h-screen w-full">
       <SidebarMenu />
       <Sidebar
         startAddress={startAddress}
@@ -119,6 +120,18 @@ const Map = () => {
           tollCost: 0, // Remplacez par le coût réel si disponible
         }))}
         hasRadars={() => false} // Remplacez par la logique réelle si disponible
+        selectedInfo={{
+          distance: true,
+          duration: true,
+          tolls: true,
+        }}
+      />
+      <Results
+        directionsResponse={directionsResponse}
+        selectedRouteIndex={selectedRouteIndex}
+        handleSelectRoute={handleSelectRoute}
+        tollInfo={tollCounts}
+        hasRadars={() => false}
         selectedInfo={{
           distance: true,
           duration: true,

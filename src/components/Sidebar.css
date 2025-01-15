@@ -1,9 +1,9 @@
 .sidebar-container {
   position: fixed;
   top: 18%; /* Abaisser la Sidebar d'un quart de la hauteur de la fenêtre */
-  left: 0; /* Coller la Sidebar à gauche */
+  left: 20px; /* Déplacer la Sidebar plus à droite */
   width: 300px; /* Largeur par défaut */
-  height: 75vh; /* Ajuster la hauteur pour compenser le déplacement */
+  height: auto; /* Ajuster la hauteur automatiquement */
   background-color: #1A161D; /* Couleur de fond */
   box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5); /* Couleur de l'ombre */
   z-index: 1000;
@@ -17,7 +17,7 @@
 .search-container {
   background-color: #1A161D; /* Couleur de fond */
   z-index: 1001;
-  padding-bottom: 10px;
+  padding-bottom: 0; /* Supprimer le padding en bas */
 }
 
 .search-input {
@@ -38,78 +38,4 @@
   border: none;
   cursor: pointer;
   border-radius: 5px; /* Arrondir les bords */
-}
-
-.routes-container {
-  margin-top: 1rem;
-  overflow-y: auto;
-  flex-grow: 1; /* Permettre à RouteList de prendre l'espace restant */
-  width: 100%; /* Assurer que RouteList prend toute la largeur de la Sidebar */
-}
-
-.route-option {
-  padding: 0.5rem;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  margin-bottom: 0.5rem;
-  cursor: pointer;
-  transition: background-color 0.3s;
-}
-
-.route-option.selected {
-  background-color: #007bff;
-  color: #fff;
-}
-
-.route-option:hover {
-  background-color: #f0f0f0;
-}
-
-/* Media queries pour rendre la Sidebar responsive */
-@media (max-width: 1024px) {
-  .sidebar-container {
-    width: 250px; /* Réduire la largeur sur les écrans plus petits */
-    height: 75vh; /* Ajuster la hauteur sur les écrans plus petits */
-    top: 25%; /* Ajuster la position verticale */
-  }
-
-  .search-input, .search-button {
-    padding: 8px; /* Réduire le padding des champs de saisie et du bouton */
-  }
-
-  .route-option {
-    padding: 0.4rem; /* Réduire le padding des options de route */
-  }
-}
-
-@media (max-width: 768px) {
-  .sidebar-container {
-    width: 200px; /* Réduire encore plus la largeur sur les très petits écrans */
-    height: 70vh; /* Réduire encore plus la hauteur sur les très petits écrans */
-    top: 25%; /* Ajuster la position verticale */
-  }
-
-  .search-input, .search-button {
-    padding: 6px; /* Réduire encore plus le padding des champs de saisie et du bouton */
-  }
-
-  .route-option {
-    padding: 0.3rem; /* Réduire encore plus le padding des options de route */
-  }
-}
-
-@media (max-width: 480px) {
-  .sidebar-container {
-    width: 150px; /* Réduire encore plus la largeur sur les très petits écrans */
-    height: 60vh; /* Réduire encore plus la hauteur sur les très petits écrans */
-    top: 25%; /* Ajuster la position verticale */
-  }
-
-  .search-input, .search-button {
-    padding: 4px; /* Réduire encore plus le padding des champs de saisie et du bouton */
-  }
-
-  .route-option {
-    padding: 0.2rem; /* Réduire encore plus le padding des options de route */
-  }
 }

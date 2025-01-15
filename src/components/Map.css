@@ -1,16 +1,34 @@
 .map-container {
-  display: flex;
+  position: relative;
   height: 100vh;
   width: 100%;
+  overflow: hidden; /* Assurez-vous que rien ne dépasse */
 }
 
 .sidebar-container {
+  position: absolute;
+  top: 0;
+  left: 40px; /* Déplacer la Sidebar encore plus à droite */
   width: 300px;
   background-color: #1A161D; /* Couleur de fond */
   border-right: 1px solid #ddd;
   padding: 1rem;
   overflow-y: auto;
   color: #ffffff; /* Couleur du texte */
+  z-index: 1000;
+}
+
+.results-container {
+  position: absolute;
+  top: 75px; /* Ajuster pour placer en dessous de la Sidebar */
+  left: 40px; /* Déplacer les résultats encore plus à droite */
+  width: 300px;
+  background-color: #f8f9fa;
+  border-radius: 4px;
+  padding: 1rem;
+  overflow-y: auto;
+  max-height: calc(100vh - 200px); /* Ajuster pour limiter la hauteur des résultats */
+  z-index: 1000;
 }
 
 .search-container {
@@ -35,12 +53,6 @@
   border: none;
   cursor: pointer;
   border-radius: 4px;
-}
-
-.routes-container {
-  margin-top: 1rem;
-  overflow-y: auto;
-  flex-grow: 1;
 }
 
 .route-option {
