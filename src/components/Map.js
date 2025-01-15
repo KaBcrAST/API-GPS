@@ -1,10 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { useLoadScript } from '@react-google-maps/api';
-import axios from 'axios';
+import { useLoadScript, GoogleMap, DirectionsRenderer } from '@react-google-maps/api';
 import Sidebar from './Sidebar';
-import MapContainer from './MapContainer';
 import SidebarMenu from './SidebarMenu';
-import Results from './Results';
 import './Map.css'; // Assurez-vous de créer ce fichier CSS pour la mise en page
 
 const libraries = ['places'];
@@ -15,6 +12,27 @@ const franceBounds = {
   west: -5.5591,
   east: 9.6624999,
 };
+
+const darkModeStyle = [
+  { elementType: 'geometry', stylers: [{ color: '#242f3e' }] },
+  { elementType: 'labels.text.fill', stylers: [{ color: '#746855' }] },
+  { elementType: 'labels.text.stroke', stylers: [{ color: '#242f3e' }] },
+  { featureType: 'administrative.locality', elementType: 'labels.text.fill', stylers: [{ color: '#d59563' }] },
+  { featureType: 'poi', elementType: 'labels.text.fill', stylers: [{ color: '#d59563' }] },
+  { featureType: 'poi.park', elementType: 'geometry', stylers: [{ color: '#263c3f' }] },
+  { featureType: 'poi.park', elementType: 'labels.text.fill', stylers: [{ color: '#6b9a76' }] },
+  { featureType: 'road', elementType: 'geometry', stylers: [{ color: '#38414e' }] },
+  { featureType: 'road', elementType: 'geometry.stroke', stylers: [{ color: '#212a37' }] },
+  { featureType: 'road', elementType: 'labels.text.fill', stylers: [{ color: '#9ca5b3' }] },
+  { featureType: 'road.highway', elementType: 'geometry', stylers: [{ color: '#746855' }] },
+  { featureType: 'road.highway', elementType: 'geometry.stroke', stylers: [{ color: '#1f2835' }] },
+  { featureType: 'road.highway', elementType: 'labels.text.fill', stylers: [{ color: '#f3d19c' }] },
+  { featureType: 'transit', elementType: 'geometry', stylers: [{ color: '#2f3948' }] },
+  { featureType: 'transit.station', elementType: 'labels.text.fill', stylers: [{ color: '#d59563' }] },
+  { featureType: 'water', elementType: 'geometry', stylers: [{ color: '#17263c' }] },
+  { featureType: 'water', elementType: 'labels.text.fill', stylers: [{ color: '#515c6d' }] },
+  { featureType: 'water', elementType: 'labels.text.stroke', stylers: [{ color: '#17263c' }] },
+];
 
 const Map = ({ name }) => {
   const { isLoaded, loadError } = useLoadScript({
@@ -33,6 +51,7 @@ const Map = ({ name }) => {
   const startSearchBoxRef = useRef(null);
   const endSearchBoxRef = useRef(null);
   const mapRef = useRef(null);
+  const directionsRendererRef = useRef(null);
 
   useEffect(() => {
     if (mapRef.current && showTraffic) {
@@ -46,6 +65,8 @@ const Map = ({ name }) => {
       alert('Les adresses de départ et d\'arrivée doivent être fournies.');
       return;
     }
+
+    clearRoute(); // Clear previous route before making a new request
 
     const directionsRequest = {
       origin: startAddress,
@@ -69,6 +90,13 @@ const Map = ({ name }) => {
         console.error('Erreur lors de la récupération des directions:', status);
       }
     });
+  };
+
+  const clearRoute = () => {
+    setDirectionsResponse(null);
+    if (directionsRendererRef.current) {
+      directionsRendererRef.current.setDirections({ routes: [] });
+    }
   };
 
   const countTolls = (routes) => {
@@ -109,6 +137,7 @@ const Map = ({ name }) => {
         endAddress={endAddress}
         setEndAddress={setEndAddress}
         handleRouteRequest={handleRouteRequest}
+        clearRoute={clearRoute}
         startSearchBoxRef={startSearchBoxRef}
         endSearchBoxRef={endSearchBoxRef}
         franceBounds={franceBounds}
@@ -117,7 +146,6 @@ const Map = ({ name }) => {
         handleSelectRoute={handleSelectRoute}
         tollInfo={tollCounts.map((count, index) => ({
           tollCount: count,
-          tollCost: 0, // Remplacez par le coût réel si disponible
         }))}
         hasRadars={() => false} // Remplacez par la logique réelle si disponible
         selectedInfo={{
@@ -126,26 +154,36 @@ const Map = ({ name }) => {
           tolls: true,
         }}
       />
-      <Results
-        directionsResponse={directionsResponse}
-        selectedRouteIndex={selectedRouteIndex}
-        handleSelectRoute={handleSelectRoute}
-        tollInfo={tollCounts}
-        hasRadars={() => false}
-        selectedInfo={{
-          distance: true,
-          duration: true,
-          tolls: true,
+     
+      <GoogleMap
+        mapContainerStyle={{ height: '100%', width: '100%' }}
+        center={{ lat: 48.8566, lng: 2.3522 }} // Centrer la carte sur Paris
+        zoom={10}
+        options={{
+          styles: darkModeStyle,
+          mapTypeControl: false, // Désactiver le contrôle de type de carte (plan/satellite)
+          fullscreenControl: false, // Désactiver le contrôle de plein écran
+          streetViewControl: false, // Désactiver le contrôle de Street View
+          zoomControl: false, // Désactiver les boutons de zoom (+ et -)
         }}
-      />
-      <MapContainer
-        directionsResponse={directionsResponse}
-        selectedRouteIndex={selectedRouteIndex}
-        handleSelectRoute={handleSelectRoute}
-        showTraffic={showTraffic}
-        mapRef={mapRef}
-        franceBounds={franceBounds}
-      />
+        onLoad={(map) => (mapRef.current = map)}
+      >
+        {directionsResponse && (
+          <DirectionsRenderer
+            directions={directionsResponse}
+            options={{
+              directions: directionsResponse,
+              routeIndex: selectedRouteIndex,
+              polylineOptions: {
+                strokeColor: '#4A3AFF', // Couleur de la ligne des trajets
+                strokeOpacity: 1.0,
+                strokeWeight: 4,
+              },
+            }}
+            onLoad={(directionsRenderer) => (directionsRendererRef.current = directionsRenderer)}
+          />
+        )}
+      </GoogleMap>
     </div>
   );
 };

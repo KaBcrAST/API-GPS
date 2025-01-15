@@ -21,17 +21,15 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: #fff;
-    padding: 20px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
     z-index: 1001;
   }
   
   .login-popup-content {
     display: flex;
     flex-direction: column;
+    width: 100%; /* Prendre toute la largeur disponible */
+    max-width: 900px; /* Augmenter la largeur maximale */
   }
-  
   .close-button {
     align-self: flex-end;
     background: none;

@@ -1,41 +1,53 @@
 .sidebar-container {
   position: fixed;
-  top: 18%; /* Abaisser la Sidebar d'un quart de la hauteur de la fenêtre */
+  top: 10%; /* Abaisser la Sidebar d'un quart de la hauteur de la fenêtre */
   left: 20px; /* Déplacer la Sidebar plus à droite */
   width: 300px; /* Largeur par défaut */
   height: auto; /* Ajuster la hauteur automatiquement */
-  background-color: #1A161D; /* Couleur de fond */
-  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5); /* Couleur de l'ombre */
   z-index: 1000;
-  padding: 20px;
-  border-radius: 0 10px 10px 0; /* Arrondir les bords à droite */
-  color: #ffffff; /* Couleur du texte */
+  padding: 10px; /* Réduire le padding */
+  border-radius: 10px; /* Arrondir les deux côtés */
   display: flex;
   flex-direction: column;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5); /* Couleur de l'ombre */
+
 }
 
 .search-container {
-  background-color: #1A161D; /* Couleur de fond */
+  background-color: #1A161D; /* Couleur de fond noir */
   z-index: 1001;
-  padding-bottom: 0; /* Supprimer le padding en bas */
+  padding: 15px; /* Réduire le padding */
+  border-radius: 10px; /* Arrondir les bords */
+  margin-bottom: 20px; /* Ajouter une marge en bas pour espacer les divs */
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centrer les éléments horizontalement */
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px; /* Espacement entre les éléments */
+  width: 100%; /* Définir la largeur de la div */
 }
 
 .search-input {
-  width: 100%;
+  width: 100%; /* Définir une largeur uniforme */
   padding: 10px;
-  margin-bottom: 10px;
-  background-color: #333; /* Couleur de fond des champs de saisie */
-  color: #ffffff; /* Couleur du texte des champs de saisie */
-  border: none;
-  border-radius: 5px; /* Arrondir les bords */
+  box-sizing: border-box; /* Inclure le padding dans la largeur totale */
 }
 
-.search-button {
-  width: 100%;
-  padding: 10px;
-  background-color: #007bff;
-  color: #fff;
-  border: none;
-  cursor: pointer;
-  border-radius: 5px; /* Arrondir les bords */
+
+
+.route-list-container {
+  background-color: #f8f9fa; /* Couleur de fond différente pour la liste des itinéraires */
+  border-radius: 10px; /* Arrondir les bords */
+  padding: 10px; /* Réduire le padding */
+  overflow-y: auto;
+  max-height: calc(100vh - 200px); /* Ajuster pour limiter la hauteur des résultats */
+  z-index: 1000;
+}
+
+.result-item {
+  margin-bottom: 10px; /* Espacement entre les éléments de résultat */
 }

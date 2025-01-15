@@ -1,9 +1,0 @@
-.greeting-container {
-    position: absolute;
-    top: 110px; /* Ajuster pour aligner avec l'adresse de départ */
-    left: 310px; /* Ajuster en fonction de la largeur de la Sidebar */
-    background-color: rgba(255, 255, 255, 0.8);
-    padding: 10px;
-    border-radius: 5px;
-    z-index: 1000;
-  }

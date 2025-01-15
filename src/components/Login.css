@@ -1,0 +1,86 @@
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    background-color: #f4f4f4;
+  }
+  
+  .login-form {
+    background-color: #fff;
+    padding: 1.5rem; /* Réduire le padding pour diminuer la hauteur */
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 1000px; /* Augmenter la largeur maximale */
+    height: 100%;
+    max-height: 800px;
+  }
+  
+  .login-title {
+    margin-bottom: 1rem; /* Réduire la marge pour diminuer la hauteur */
+    font-size: 1.5rem;
+    color: #333;
+    text-align: center;
+  }
+  
+  .form-group {
+    margin-bottom: 0.75rem; /* Réduire la marge pour diminuer la hauteur */
+  }
+  
+  .form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #555;
+  }
+  
+  .form-group input {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+  }
+  
+  .btn {
+    display: inline-block;
+    width: 100%;
+    padding: 0.75rem;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+    margin-bottom: 0.5rem;
+    transition: background-color 0.3s;
+  }
+  
+  .btn-primary {
+    background-color: #4A3AFF;
+    color: #fff;
+  }
+  
+  .btn-primary:hover {
+    background-color: #3a2ecc;
+  }
+  
+  .btn-secondary {
+    background-color: #db4437;
+    color: #fff;
+  }
+  
+  .btn-secondary:hover {
+    background-color: #c23321;
+  }
+  
+  .btn-facebook {
+    background-color: #3b5998;
+    color: #fff;
+    text-align: center;
+    text-decoration: none;
+    padding: 0.75rem;
+    display: block;
+  }
+  
+  .btn-facebook:hover {
+    background-color: #2d4373;
+  }

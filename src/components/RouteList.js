@@ -1,6 +1,6 @@
 import React from 'react';
 
-const RouteList = ({ directionsResponse, selectedRouteIndex, handleSelectRoute, tollInfo, hasRadars, selectedInfo }) => {
+const RouteList = ({ directionsResponse, selectedRouteIndex, handleSelectRoute, tollInfo = [], hasRadars, selectedInfo }) => {
   if (!directionsResponse || !directionsResponse.routes) {
     return null; // Assurez-vous que directionsResponse et routes existent
   }
@@ -10,6 +10,14 @@ const RouteList = ({ directionsResponse, selectedRouteIndex, handleSelectRoute, 
       <h3>Itinéraires disponibles</h3>
       {directionsResponse.routes.map((route, index) => {
         const leg = route.legs[0]; // Assurez-vous que `legs[0]` existe
+
+        // Log the number of tolls for the current route
+        if (tollInfo[index] && tollInfo[index].tollCount !== undefined) {
+          console.log(`Route ${index + 1} has ${tollInfo[index].tollCount} toll(s)`);
+        } else {
+          console.log(`Route ${index + 1} has no toll information`);
+        }
+
         return (
           <div
             key={index}
@@ -25,10 +33,10 @@ const RouteList = ({ directionsResponse, selectedRouteIndex, handleSelectRoute, 
                   : leg.duration?.text || 'Non disponible'}
               </p>
             )}
-            {selectedInfo.tolls && tollInfo[index]?.tollCount !== undefined && (
+            {selectedInfo.tolls && tollInfo[index] && tollInfo[index].tollCount !== undefined && (
               <p style={{ color: tollInfo[index].tollCount > 0 ? 'red' : 'green' }}>
                 {tollInfo[index].tollCount > 0
-                  ? `Cet itinéraire comporte ${tollInfo[index].tollCount} péage(s) avec un coût total de ${tollInfo[index].tollCost || 0} unités`
+                  ? `Cet itinéraire comporte ${tollInfo[index].tollCount} péage(s)`
                   : 'Sans péages'}
               </p>
             )}

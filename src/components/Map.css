@@ -1,14 +1,14 @@
 .map-container {
   position: relative;
   height: 100vh;
-  width: 100%;
+  width: 1000%;
   overflow: hidden; /* Assurez-vous que rien ne dépasse */
 }
 
 .sidebar-container {
   position: absolute;
-  top: 0;
-  left: 40px; /* Déplacer la Sidebar encore plus à droite */
+  top: 12%;
+  left: 50px; /* Déplacer la Sidebar encore plus à droite */
   width: 300px;
   background-color: #1A161D; /* Couleur de fond */
   border-right: 1px solid #ddd;
@@ -18,10 +18,19 @@
   z-index: 1000;
 }
 
+.greeting-container {
+  position: absolute;
+  top: 5%; /* Ajuster pour aligner avec l'adresse de départ */
+  left: 50px; /* Ajuster en fonction de la largeur de la Sidebar */
+  color: #ccc;
+  padding: 10px;
+  border-radius: 5px;
+  z-index: 1000;
+  font-size: 2rem;
+}
+
 .results-container {
   position: absolute;
-  top: 75px; /* Ajuster pour placer en dessous de la Sidebar */
-  left: 40px; /* Déplacer les résultats encore plus à droite */
   width: 300px;
   background-color: #f8f9fa;
   border-radius: 4px;
@@ -48,7 +57,7 @@
 .search-button {
   width: 100%;
   padding: 0.5rem;
-  background-color: #007bff;
+  background-color: #4A3AFF;
   color: #fff;
   border: none;
   cursor: pointer;
@@ -65,7 +74,7 @@
 }
 
 .route-option.selected {
-  background-color: #007bff;
+  background-color: #4A3AFF;
   color: #fff;
 }
 
