@@ -14,7 +14,7 @@ const InfoSelection = ({ selectedInfo, handleInfoChange, toggleInfoMenu }) => {
             checked={selectedInfo.distance}
             onChange={() => handleInfoChange('distance')}
           />
-          Distanceeeeeeeee
+          Distance
         </label>
         <label>
           <input

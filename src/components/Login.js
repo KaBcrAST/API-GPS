@@ -4,7 +4,13 @@ import { useNavigate } from 'react-router-dom';
 import CryptoJS from 'crypto-js';
 import './Login.css';
 
-const API_URL = 'https://react-gpsapi.vercel.app';
+// Utiliser uniquement la variable d'environnement
+const API_URL = process.env.REACT_APP_API_URL;
+
+// Vérifier si la variable d'environnement existe
+if (!API_URL) {
+  console.error('REACT_APP_API_URL environment variable is not defined!');
+}
 
 const Login = () => {
     const navigate = useNavigate();
@@ -59,6 +65,10 @@ const Login = () => {
         setSuccess(false);
 
         try {
+            if (!API_URL) {
+                throw new Error('URL de l\'API non configurée');
+            }
+
             // Préparer les données sécurisées
             const secureFormData = {
                 email: formData.email.toLowerCase().trim(),
@@ -95,6 +105,10 @@ const Login = () => {
     };
 
     const handleGoogleLogin = () => {
+        if (!API_URL) {
+            setError('URL de l\'API non configurée');
+            return;
+        }
         setLoading(true);
         setError(null);
         window.location.href = `${API_URL}/api/auth/google/web`;
@@ -113,7 +127,7 @@ const Login = () => {
                 <button 
                     className="google-login-button"
                     onClick={handleGoogleLogin}
-                    disabled={loading}
+                    disabled={loading || !API_URL}
                 >
                     <img 
                         src="https://developers.google.com/identity/images/g-logo.png"
@@ -171,7 +185,7 @@ const Login = () => {
                     <button 
                         type="submit" 
                         className="btn btn-primary"
-                        disabled={loading}
+                        disabled={loading || !API_URL}
                     >
                         {loading ? 'Chargement...' : (isLogin ? 'Se connecter' : 'S\'inscrire')}
                     </button>
