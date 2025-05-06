@@ -14,9 +14,10 @@
   .user-info {
     display: flex;
     align-items: center;
+    gap: 10px;
   }
   
-  .logout-button, .login-button {
+  .logout-button {
     margin-left: 10px;
     padding: 5px 10px;
     background-color: #4A3AFF;
@@ -25,3 +26,26 @@
     cursor: pointer;
     border-radius: 5px;
   }
+
+.login-button {
+    margin-left: 10px;
+    padding: 8px 16px;
+    background-color: #4A3AFF;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    width: auto;
+    font-size: 14px;
+}
+
+.login-button:hover {
+    background-color: #3a2ecc;
+}
+
+.profile-picture {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    margin-right: 10px;
+}

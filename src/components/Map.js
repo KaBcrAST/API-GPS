@@ -118,6 +118,7 @@ const Map = ({ name }) => {
     setSelectedRouteIndex(index);
   };
 
+  
   const handlePlacesChanged = (ref, setAddress) => {
     const places = ref.current.getPlaces();
     if (places.length > 0) {

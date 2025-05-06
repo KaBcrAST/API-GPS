@@ -10,16 +10,33 @@ const Home = () => {
     const [isAuthenticated, setIsAuthenticated] = useState(false);
     const [showLogin, setShowLogin] = useState(false);
 
+    // Vérifier l'authentification au chargement et après connexion
     useEffect(() => {
-        const storedName = localStorage.getItem('name');
-        if (storedName) {
-            setName(storedName);
-            setIsAuthenticated(true);
-        }
+        const checkAuth = () => {
+            const token = localStorage.getItem('token');
+            const storedName = localStorage.getItem('name');
+            const user = localStorage.getItem('user');
+
+            if (token && user) {
+                try {
+                    const userData = JSON.parse(user);
+                    setName(userData.name || storedName);
+                    setIsAuthenticated(true);
+                    setShowLogin(false);
+                } catch (error) {
+                    console.error('Error parsing user data:', error);
+                }
+            }
+        };
+
+        checkAuth();
     }, []);
 
-    const handleLoginSuccess = (userName) => {
-        setName(userName);
+    const handleLoginSuccess = (userData) => {
+        console.log('Login success:', userData); // Debug log
+        localStorage.setItem('name', userData.name);
+        localStorage.setItem('user', JSON.stringify(userData));
+        setName(userData.name);
         setIsAuthenticated(true);
         setShowLogin(false);
     };
@@ -29,6 +46,7 @@ const Home = () => {
         setName('');
         localStorage.removeItem('name');
         localStorage.removeItem('token');
+        localStorage.removeItem('user');
     };
 
     return (

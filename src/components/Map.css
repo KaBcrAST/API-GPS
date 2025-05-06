@@ -11,7 +11,6 @@
   left: 50px; /* Déplacer la Sidebar encore plus à droite */
   width: 300px;
   background-color: #1A161D; /* Couleur de fond */
-  border-right: 1px solid #ddd;
   padding: 1rem;
   overflow-y: auto;
   color: #ffffff; /* Couleur du texte */
@@ -48,7 +47,6 @@
   width: calc(100% - 1rem);
   margin-bottom: 0.5rem;
   padding: 0.5rem;
-  border: 1px solid #ccc;
   border-radius: 4px;
   background-color: #333; /* Couleur de fond des champs de saisie */
   color: #ffffff; /* Couleur du texte des champs de saisie */

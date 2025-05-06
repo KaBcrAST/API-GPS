@@ -36,7 +36,7 @@ const Register = () => {
                 <label>Password</label>
                 <input type="password" name="password" value={password} onChange={onChange} required />
             </div>
-            <button type="submit">Register</button>
+            <button type="submit">Registerrrr</button>
         </form>
     );
 };

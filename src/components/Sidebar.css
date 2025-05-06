@@ -16,7 +16,7 @@
 .search-container {
   background-color: #1A161D; /* Couleur de fond noir */
   z-index: 1001;
-  padding: 15px; /* Réduire le padding */
+  padding: 16px; /* Réduire le padding */
   border-radius: 10px; /* Arrondir les bords */
   margin-bottom: 20px; /* Ajouter une marge en bas pour espacer les divs */
   display: flex;
@@ -27,17 +27,115 @@
 .input-group {
   display: flex;
   flex-direction: column;
-  gap: 10px; /* Espacement entre les éléments */
+  gap: 12px; /* Espacement entre les éléments */
   width: 100%; /* Définir la largeur de la div */
+}
+
+.search-input-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.input-with-icon {
+  position: relative;
+  display: flex;
+  align-items: center;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.search-icon {
+  position: absolute;
+  left: 12px;
+  color: #666;
+}
+
+.clear-icon {
+  position: absolute;
+  right: 12px;
+  color: #666;
+  cursor: pointer;
+  padding: 4px;
 }
 
 .search-input {
   width: 100%; /* Définir une largeur uniforme */
-  padding: 10px;
-  box-sizing: border-box; /* Inclure le padding dans la largeur totale */
+  height: 48px;
+  padding: 0 40px;
+  box-sizing: border-box;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  color: #333;
 }
 
+.search-input:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px #4A3AFF;
+}
 
+.predictions-container {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: white;
+  margin-top: 4px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  max-height: 200px;
+  overflow-y: auto;
+  z-index: 1000;
+}
+
+.prediction-item {
+  display: flex;
+  align-items: center;
+  padding: 12px 16px;
+  cursor: pointer;
+  border-bottom: 1px solid #eee;
+}
+
+.prediction-item:hover {
+  background-color: #f5f5f5;
+}
+
+.place-icon {
+  color: #666;
+  margin-right: 12px;
+  min-width: 20px;
+}
+
+.prediction-item span {
+  flex: 1;
+  font-size: 14px;
+  color: #333;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.search-button {
+  height: 48px;
+  background-color: #4A3AFF;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.search-button:hover {
+  background-color: #3929cc;
+}
+
+.search-button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
 
 .route-list-container {
   background-color: #f8f9fa; /* Couleur de fond différente pour la liste des itinéraires */

@@ -40,12 +40,10 @@ const Sidebar = ({
 
   useEffect(() => {
     if (addressesChanged) {
-      if (!debouncedStartAddress || !debouncedEndAddress) {
-        clearRoute();
-      }
+      clearRoute();
       setAddressesChanged(false);
     }
-  }, [addressesChanged, debouncedStartAddress, debouncedEndAddress, clearRoute]);
+  }, [addressesChanged, clearRoute]);
 
   const handlePlacesChanged = (ref, setAddress) => {
     const places = ref.current.getPlaces();
